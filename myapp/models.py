@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 
@@ -16,3 +17,13 @@ class Item(models.Model):
 
     def __str__(self):
         return self.itemName
+    
+class Product(models.Model):
+    slug = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    link = models.URLField(max_length=200)
+    label = models.CharField(max_length=100)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

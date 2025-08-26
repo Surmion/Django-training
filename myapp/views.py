@@ -1,8 +1,8 @@
 from rest_framework import generics
+# from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import Item, Location
-from .serializers import ItemSerializer, LocationSerializer
-
+from .models import Item, Location, Product
+from .serializers import ItemSerializer, LocationSerializer, ProductSerializer
 
 class ItemList(generics.ListCreateAPIView):
     serializer_class = ItemSerializer
@@ -29,3 +29,12 @@ class LocationList(generics.ListCreateAPIView):
 class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
+
+class ProductList(generics.ListCreateAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+
+
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
